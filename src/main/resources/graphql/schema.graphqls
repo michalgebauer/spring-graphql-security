@@ -1,0 +1,5 @@
+type Query {
+    securedResource: String
+    securedResourceAdmin: String
+    unsecuredResource: String
+}

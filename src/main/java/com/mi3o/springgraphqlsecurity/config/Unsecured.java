@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Marking annotation that will switch of security check for given method.
+ * Marking annotation that will switch off security check for given method.
  * Works only for methods defined in GraphQL Resolvers
  */
 @Retention(RetentionPolicy.RUNTIME)

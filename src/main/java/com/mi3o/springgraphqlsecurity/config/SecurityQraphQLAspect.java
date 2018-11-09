@@ -16,7 +16,7 @@ public class SecurityQraphQLAspect {
 
     /**
      * All graphQLResolver methods can be called only by authenticated user.
-     * Exclusions are named in Pointcut expression.
+     * @Unsecured annotated methods are excluded
      */
     @Before("allGraphQLResolverMethods() && isDefinedInApplication() && !isMethodAnnotatedAsUnsecured()")
     public void doSecurityCheck() {

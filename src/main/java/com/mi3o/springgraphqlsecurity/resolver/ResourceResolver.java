@@ -1,6 +1,7 @@
 package com.mi3o.springgraphqlsecurity.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.mi3o.springgraphqlsecurity.config.Unsecured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +16,8 @@ public class ResourceResolver implements GraphQLQueryResolver {
         return "Secured resource Admin";
     }
 
+    @Unsecured
     public String unsecuredResource() {
         return "Unsecured resource";
     }
-
 }

@@ -18,7 +18,7 @@ public class SecurityQraphQLAspect {
      * All graphQLResolver methods can be called only by authenticated user.
      * Exclusions are named in Pointcut expression.
      */
-    @Before("allGraphQLResolverMethods() && isDefinedInApplication() && !isUnsecuredResourceMethod()")
+    @Before("allGraphQLResolverMethods() && isDefinedInApplication() && !isMethodAnnotatedAsUnsecured()")
     public void doSecurityCheck() {
         if (SecurityContextHolder.getContext() == null ||
                 SecurityContextHolder.getContext().getAuthentication() == null ||
@@ -46,9 +46,9 @@ public class SecurityQraphQLAspect {
     }
 
     /**
-     * Exact method signature which will be excluded from security check
+     * Any method annotated with @Unsecured
      */
-    @Pointcut("execution(public java.lang.String com.mi3o.springgraphqlsecurity.resolver.ResourceResolver.unsecuredResource())")
-    private void isUnsecuredResourceMethod() {
+    @Pointcut("@annotation(com.mi3o.springgraphqlsecurity.config.Unsecured)")
+    private void isMethodAnnotatedAsUnsecured() {
     }
 }
